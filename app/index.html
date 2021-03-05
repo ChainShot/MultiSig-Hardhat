@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <title> MultiSig Dapp </title>
+  </head>
+  <body>
+    <div class="contract-interface">
+      <h1> Create New Transaction </h1>
+      <label>
+        Destination
+        <input type="text" id="destination"/>
+      </label>
+
+      <label>
+        Value (in Wei)
+        <input type="text" id="wei"/>
+      </label>
+
+      <div class="button" id="deploy">
+        Create
+      </div>
+
+
+      <div class="contract-info">
+        <h1> Contract Information </h1>
+
+        <div class="field">
+          <label> Address </label>
+          <div id="address"> <!-- address gets populated here here --> </div>
+        </div>
+
+        <div class="field">
+          <label> Balance in Wei </label>
+          <div id="balance"> <!-- contract balance gets populated here here --> </div>
+        </div>
+
+        <div class="field">
+          <label> Required Confirmations </label>
+          <div id="confirmations"> <!-- required confirmations go here --> </div>
+        </div>
+
+        <div class="field">
+          <label> Owners </label>
+          <div id="owners"> <!-- owner addresses get populated here here --> </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="existing-transactions">
+      <h1> Existing Transactions </h1>
+
+      <div id="container">
+          <!-- where existing transactions will go -->
+      </div>
+    </div>
+
+    <script src="./index.js"></script>
+  </body>
+</html>

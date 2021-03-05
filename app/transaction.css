@@ -1,0 +1,21 @@
+.transaction {
+  background-color: #eee;
+  margin: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+}
+
+.transaction label {
+  margin: 0 5px;
+}
+
+.transaction .actions {
+  display: flex;
+  justify-content: center;
+}
+
+.transaction .actions > div {
+  margin: 5px;
+}

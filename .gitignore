@@ -1,0 +1,7 @@
+!.gitignore
+node_modules
+artifacts
+dist
+app/__config.json
+cache
+.cache
