@@ -6,6 +6,11 @@ contract MultiSig {
     uint public transactionCount;
     uint public required;
 
+    event Confirmation(address indexed sender, uint indexed transactionId);
+    event Submission(uint indexed transactionId);
+    event Execution(uint indexed transactionId);
+    event Deposit(address indexed sender, uint value);
+
     struct Transaction {
         address payable destination;
         uint value;
@@ -17,7 +22,7 @@ contract MultiSig {
     mapping(uint => mapping(address => bool)) public confirmations;
 
     receive() payable external {
-
+        emit Deposit(msg.sender, msg.value);
     }
 
     function getOwners() view public returns(address[] memory) {
@@ -51,6 +56,7 @@ contract MultiSig {
 
     function executeTransaction(uint transactionId) public {
         require(isConfirmed(transactionId));
+        emit Execution(transactionId);
         Transaction storage _tx = transactions[transactionId];
         (bool success, ) = _tx.destination.call{ value: _tx.value }(_tx.data);
         require(success, "Failed to execute transaction");
@@ -95,10 +101,12 @@ contract MultiSig {
     function submitTransaction(address payable dest, uint value, bytes memory data) public {
         uint id = addTransaction(dest, value, data);
         confirmTransaction(id);
+        emit Submission(id);
     }
 
     function confirmTransaction(uint transactionId) public {
         require(isOwner(msg.sender));
+        Confirmation(msg.sender, transactionId);
         confirmations[transactionId][msg.sender] = true;
         if(isConfirmed(transactionId)) {
             executeTransaction(transactionId);
