@@ -26,6 +26,6 @@ After that, run `npx hardhat run scripts/deploy.js --network localhost` to deplo
 
 ## Front-End
 
-To run the front-end application run `parcel app/index.html` from the top-level directory.
+To run the front-end application run `npx parcel app/index.html` from the top-level directory.
 
 You can learn more about Parcel [here](https://parceljs.org/).
