@@ -29,3 +29,12 @@ After that, run `npx hardhat run scripts/deploy.js --network localhost` to deplo
 To run the front-end application run `npx parcel app/index.html` from the top-level directory.
 
 You can learn more about Parcel [here](https://parceljs.org/).
+
+## Connect Local Blockchain To MetaMask
+
+In MetaMask, select the 'Networks' tab, then select 'Custom RPC' - then fill in:
+- Network Name: you can name this anything you like
+- RPC URL: `http://127.0.0.1:8545/`
+- Chain ID: `31337`
+
+Select 'Save' then import a private key into MetaMask from your local blockchain and you are a go!
